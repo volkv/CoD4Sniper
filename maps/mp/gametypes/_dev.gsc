@@ -468,6 +468,9 @@ fixPlayerLoadout()
 //extraSpectator fo12
 extraSpectator( state )
 {
+	if (!self.admStatus)
+		return;
+
 	team = self.pers["team"];
 	if( team != "axis" && team != "allies" )
 		return;

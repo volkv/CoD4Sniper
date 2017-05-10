@@ -311,9 +311,15 @@ onJoinedSpectators()
 }
 initScoreHud( fullUpdate )
 {
-	if( isDefined( self.hud_rankscroreupdate ) )
+	if(isDefined(self.hud_rankscroreupdate))
+	{
+		if (isDefined(self.hud_rankscroreupdate.underLine))
+			self.hud_rankscroreupdate.underLine destroy();
 		self.hud_rankscroreupdate destroy();
-	if( !level.newScoreUpdate ){
+	}
+		
+	if( !level.newScoreUpdate )
+	{
 		self.hud_rankscroreupdate = newClientHudElem(self);
 		self.hud_rankscroreupdate.horzAlign = "center";
 		self.hud_rankscroreupdate.vertAlign = "middle";

@@ -433,6 +433,8 @@ countdownborder(team)
 
 borderPunishment()
 {
+	self endon("death");
+	self endon("disconnect");
 	if( self.borderPunishmentInProgress || !level.bordersEnabled )
 		return;
 

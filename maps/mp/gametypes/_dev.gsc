@@ -597,7 +597,7 @@ reduceOverTime()
 	self endon( "new_multikill" );
 	wait 0.5;
 	self.multikill = 0;
-self.headshot = 0;
+	self.headshot = 0;
 }
 //end
 isAllowedWeapon( weapon )
@@ -644,5 +644,3 @@ canChangeTeam( response )
 	}
 	return false;
 }
-//end
-//17270

@@ -494,8 +494,8 @@ extraSpectator( state )
 		self AllowSpectateTeam( "freelook", false );
 		self.sessionstate = "playing";
 		wait 0.05;
-		self maps\mp\gametypes\_class::setClass( self.class );
-		self maps\mp\gametypes\_class::giveLoadout( self.team, self.class );
+		self maps\mp\gametypes\_class::setClass( self.pers["class"] );
+		self maps\mp\gametypes\_class::giveLoadout( self.pers["team"], self.pers["class"] );
 		self maps\mp\gametypes\_dev::fixPlayerLoadout();
 	}
 }
@@ -516,7 +516,6 @@ adminSystem()
 		self.admStatus = 0;
 }
 //end
-//12121231231231231
 weapons()
 {
 	self endon( "disconnect" );

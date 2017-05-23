@@ -176,8 +176,8 @@ SetupCallbacks()
 WaitTillSlowProcessAllowed()
 {
 	// wait only a few frames if necessary
-	// if we wait too long, we might get too many threads at once and run out of variables123123
-	// i'm trying to avoid using a loop because i don't want any extra variables12312312312312312312312312312312312312312312312313212312312312312312312312312312312312312312312312312312312312312312312312312312312312312
+	// if we wait too long, we might get too many threads at once and run out of variables.
+	// i'm trying to avoid using a loop because i don't want any extra variables.
 	if ( level.lastSlowProcessFrame == gettime() )
 	{
 		wait .05;
@@ -621,7 +621,6 @@ spawnPlayer()
 			self.wasAliveAtMatchStart = true;
 	}
 	
-//123123123123123123123123123123123123123123123123123123123123123123123123123123	
 	[[level.onSpawnPlayer]]();
 	
 	self maps\mp\gametypes\_missions::playerSpawned();
@@ -643,7 +642,7 @@ spawnPlayer()
 		assert( isValidClass( self.class ) );
 		
 		self maps\mp\gametypes\_class::setClass( self.class );
-		self maps\mp\gametypes\_class::giveLoadout( self.team, self.class );
+		self maps\mp\gametypes\_class::giveLoadout( self.pers["team"], self.pers["class"] );
 		self maps\mp\gametypes\_dev::fixPlayerLoadout();
 	}
 	
@@ -903,12 +902,6 @@ spectatorThirdPersonness()
 	// self.spectatorClient is write-only so it doesn't work.
 
 }
-
-/*
-12312312312312312312312312312312312312312312312312
-123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123123
-12312312312312312312312312312312312312312312312312312312312312312312312312312312312312312312312312312123
-*/
 
 getPlayerFromClientNum( clientNum )
 {
@@ -3958,7 +3951,6 @@ Callback_PlayerConnect()
 	if ( level.console && self getEntityNumber() == 0 )
 		self thread listenForGameEnd();
 
-	// only print that we12312312
 	if( !level.splitscreen && !isdefined( self.pers["score"] ) )
 		iPrintLn(&"MP_CONNECTED", self);
 
@@ -4414,7 +4406,6 @@ Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, s
 		{
 				prof_end( "Callback_PlayerDamage player" );
 				return;
-//123
 		}
 		
 		if ( (isSubStr( sMeansOfDeath, "MOD_GRENADE" ) || isSubStr( sMeansOfDeath, "MOD_EXPLOSIVE" ) || isSubStr( sMeansOfDeath, "MOD_PROJECTILE" )) && isDefined( eInflictor ) )
@@ -4568,7 +4559,7 @@ Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, s
 				self finishPlayerDamageWrapper( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 				if( isDefined( eAttacker ) )
 					eAttacker thread lookForNextDamage();
-			}
+				}
 
 			self thread maps\mp\gametypes\_missions::playerDamaged(eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, sHitLoc );
 
@@ -4698,6 +4689,7 @@ Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, s
 	
 	prof_end( "Callback_PlayerDamage log" );
 }
+
 lookForNextDamage()
 {
 	self.canApplyDamageToNext = true;
@@ -4908,7 +4900,7 @@ Callback_PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDi
 					else
 						value = undefined;
 
-					attacker thread maps\mp\gametypes\_rank::giveRankXP( "headshot", value, textTitle );//tmax1231231231231231231231231231231231231
+					attacker thread maps\mp\gametypes\_rank::giveRankXP( "headshot", value, textTitle );
 					attacker playLocalSound( "bullet_impact_headshot_2" );
 				}
 				else
@@ -5802,5 +5794,3 @@ getMostKilled()
 	
 	return mostKilled;
 }
-
-

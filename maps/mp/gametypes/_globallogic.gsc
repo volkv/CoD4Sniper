@@ -4554,16 +4554,18 @@ Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, s
 				self.wasCooked = undefined;
 			
 			self.lastDamageWasFromEnemy = (isDefined( eAttacker ) && (eAttacker != self));
-			//Anti-damage through walls. Original idea by T-Max, codded by T-Max
-			if( iDFlags != 8 || iDFlags == 8 && eAttacker.canApplyDamageToNext ){
-				self finishPlayerDamageWrapper( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
-				if( isDefined( eAttacker ) )
-					eAttacker thread lookForNextDamage();
-				}
 
-			self thread maps\mp\gametypes\_missions::playerDamaged(eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, sHitLoc );
-
-			prof_end( "Callback_PlayerDamage world" );
+            //Anti-damage through walls. Original idea by T-Max, codded by T-Max
+            if (iDFlags != 8 || iDFlags == 8 && eAttacker.canApplyDamageToNext)
+            {
+                self finishPlayerDamageWrapper( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
+                
+                if (isDefined(eAttacker))
+                    eAttacker thread lookForNextDamage();
+            }
+            
+            self thread maps\mp\gametypes\_missions::playerDamaged(eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, sHitLoc );
+            prof_end( "Callback_PlayerDamage world" );
 		}
 
 		if ( isdefined(eAttacker) && eAttacker != self )

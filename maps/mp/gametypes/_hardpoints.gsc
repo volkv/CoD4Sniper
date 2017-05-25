@@ -852,7 +852,7 @@ streakNotify( streakVal )
 {
 	self endon("disconnect");
 
-	// wait until any challenges have been processed1231231231231231231231231231231231312312312312312312312312312312312312312312312312312312312
+	// wait until any challenges have been processed
 	self waittill( "playerKilledChallengesProcessed" );
 	wait .05;
 	
@@ -1266,4 +1266,3 @@ useAirstrike( pos )
 
 	thread doArtillery( pos, self, self.pers["team"] );
 }
-//34668

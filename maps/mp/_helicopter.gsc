@@ -1399,4 +1399,3 @@ improved_sightconetrace( helicopter )
 	//println( "Target sight: " + y
 	return yes/5;
 }
-//44853

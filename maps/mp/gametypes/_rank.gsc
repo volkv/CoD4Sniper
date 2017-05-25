@@ -716,8 +716,6 @@ unlockAttachmentSingular( refString )
 	self unlockPage( 1 );
 }
 /*
-12312312312
-
 
 clearNewStatus( stat, bitMask )
 {
@@ -1071,4 +1069,3 @@ incRankXP( amount )
 	self.pers["rankxp"] = newXp;
 	self maps\mp\gametypes\_persistence::statSet( "rankxp", newXp );
 }
-//30883
